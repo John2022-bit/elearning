@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - FPCA Tarn-et-Garonne</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    .full-bg {
+      background: url('img/banner-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-wrap {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .form-logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="full-bg">
+        <form class="form-wrap p-4 rounded" style="width: 100%; max-width: 400px;" action="login.php" method="POST">
+          <a href="index.php"><img src="img/LogoCapou.png" alt="Logo FPCA" class="form-logo"></a>
+          <h4 class="text-white text-center mb-4">Connexion à votre compte</h4>
+          <input type="email" class="form-control mb-3" name="email" placeholder="Adresse email" required>
+          <input type="password" class="form-control mb-3" name="password" placeholder="Mot de passe" required>
+          <button class="primary-btn text-uppercase w-100" type="submit">Se connecter</button>
+          <p class="mt-3 text-white text-center">Pas encore de compte ? <a href="register.html" class="text-white"><u>Créer un compte</u></a>
+        </form>
+    </div>
+</body>
+</html>

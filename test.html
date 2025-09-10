@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h2>Answer the Questions</h2>
+    <form id="test-form"></form>
+    <button class="btn btn-primary mt-3" onclick="submitTest()">Submit</button>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const courseId = params.get("course_id");
+
+        fetch(`load_test.php?course_id=${courseId}`)
+            .then(res => res.json())
+            .then(questions => {
+                const form = document.getElementById('test-form');
+                questions.forEach(q => {
+                    form.innerHTML += `
+                        <div class="mb-3">
+                            <label>${q.question_text}</label>
+                            <input type="text" class="form-control" name="q_${q.id}">
+                        </div>
+                    `;
+                });
+            });
+
+        function submitTest() {
+            const formData = new FormData(document.getElementById('test-form'));
+            const responses = [];
+            for (let [key, value] of formData.entries()) {
+                const questionId = key.split('_')[1];
+                responses.push({ question_id: questionId, answer: value });
+            }
+
+            fetch('submit_test.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ user_id: 1, responses }) // Replace with actual user session ID
+            }).then(res => res.json())
+              .then(data => {
+                  alert("Recommended Module ID: " + data.recommended_module_id);
+              });
+        }
+    </script>
+</body>
+</html>
