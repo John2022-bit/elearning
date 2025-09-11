@@ -15,6 +15,7 @@
 			                <li><a href="">Voir les opportinutés d'emploi</a></li>
 			            </ul>
 			          </li>					          					          		          
+                                  <li><a href="positionnement.php">Positionnement</a></li>
 			          <li><a href="">Demande d'inscription</a></li>
 			        </ul>
 			      </nav>
